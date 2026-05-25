@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kbo-crawler"
+version = "0.1.0"
+description = "KBO record room crawler and API"
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4>=4.12.3",
+    "fastapi>=0.115.0",
+    "lxml>=5.3.0",
+    "pymysql>=1.1.1",
+    "python-dotenv>=1.0.1",
+    "requests>=2.32.3",
+    "sqlmodel>=0.0.22",
+    "uvicorn[standard]>=0.30.6",
+]
+
+[project.optional-dependencies]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=8.3.3",
+]
+
+[project.scripts]
+kbo-crawl = "kbo_crawler.cli:main"
+kbo-api = "kbo_crawler.api:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
