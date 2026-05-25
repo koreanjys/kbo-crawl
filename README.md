@@ -42,4 +42,5 @@ npm install
 npm run dev
 ```
 
-기본 API 주소는 `http://localhost:8000`입니다. 변경이 필요하면 `frontend/.env`에 `VITE_API_BASE_URL`을 설정합니다.
+운영 API 예시 주소는 `https://kbo-crawl.duckdns.org`입니다. 서버 내부에서 직접 확인할 때는 `http://localhost:8001`을 사용합니다.
+변경이 필요하면 `frontend/.env`에 `VITE_API_BASE_URL`을 설정합니다.
