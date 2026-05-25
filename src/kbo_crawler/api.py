@@ -71,6 +71,7 @@ def records(
     page_key: str | None = Query(default=None),
     record_group: str | None = Query(default=None),
     category: str | None = Query(default=None),
+    series_code: str | None = Query(default=None),
     season: int | None = Query(default=None),
     limit: int = Query(default=100, ge=1, le=1000),
     offset: int = Query(default=0, ge=0),
@@ -86,6 +87,8 @@ def records(
         filters.append(RecordRow.record_group == record_group)
     if category:
         filters.append(RecordRow.category == category)
+    if series_code:
+        filters.append(RecordRow.series_code == series_code)
     if season:
         filters.append(RecordRow.season == season)
 
@@ -128,4 +131,3 @@ def records(
 
 def main() -> None:
     uvicorn.run("kbo_crawler.api:app", host=settings.api_host, port=settings.api_port, reload=True)
-

@@ -5,6 +5,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000
 
 const metadata = ref({ pages: [], series: [], teams: [], positions: [] })
 const pageKey = ref('')
+const seriesCode = ref('0')
 const season = ref('')
 const records = ref([])
 const total = ref(0)
@@ -55,6 +56,7 @@ const fetchRecords = async () => {
   try {
     const params = new URLSearchParams({
       page_key: pageKey.value,
+      series_code: seriesCode.value,
       season: season.value,
       limit: String(limit.value),
       offset: String(offset.value),
@@ -88,7 +90,7 @@ watch(selectedPage, (page) => {
   offset.value = 0
 })
 
-watch([pageKey, season, offset, limit], fetchRecords)
+watch([pageKey, seriesCode, season, offset, limit], fetchRecords)
 
 onMounted(async () => {
   try {
@@ -126,6 +128,15 @@ onMounted(async () => {
         <select v-model="season">
           <option v-for="year in seasons" :key="year" :value="String(year)">
             {{ year }}
+          </option>
+        </select>
+      </label>
+
+      <label>
+        <span>시리즈</span>
+        <select v-model="seriesCode">
+          <option v-for="series in metadata.series" :key="series.code" :value="series.code">
+            {{ series.name }}
           </option>
         </select>
       </label>
@@ -171,4 +182,3 @@ onMounted(async () => {
     </footer>
   </main>
 </template>
-
