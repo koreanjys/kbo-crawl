@@ -17,6 +17,7 @@ body {
 }
 
 button,
+input,
 select {
   font: inherit;
 }
@@ -38,6 +39,7 @@ button:disabled {
   cursor: not-allowed;
 }
 
+input,
 select {
   min-height: 38px;
   border: 1px solid #bec8d2;
@@ -45,6 +47,10 @@ select {
   background: #fff;
   color: #17202a;
   padding: 0 10px;
+}
+
+input::placeholder {
+  color: #7f8b96;
 }
 
 .app-shell {
@@ -87,7 +93,7 @@ select {
 
 .filters {
   display: grid;
-  grid-template-columns: minmax(220px, 1.4fr) minmax(120px, 0.5fr) minmax(110px, 0.4fr) auto;
+  grid-template-columns: minmax(180px, 1.1fr) minmax(110px, 0.4fr) minmax(170px, 0.65fr) minmax(180px, 0.75fr) minmax(100px, 0.35fr) auto;
   gap: 12px;
   padding: 16px 24px;
   background: #eef2f5;
@@ -203,4 +209,3 @@ tbody tr:hover {
     justify-content: space-between;
   }
 }
-
